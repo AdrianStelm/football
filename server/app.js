@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'src')));
 app.use("/", routes);
 
 
-
 async function connectToDb(){
   await run()
 }
