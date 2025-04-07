@@ -9,8 +9,8 @@ const crypto = require('crypto');
 const transporter = require('../email');
 
 passport.use(new GoogleStrategy({
-    clientID: '921308896536-tfe725f1ruq3kakn1i5vrernm0uuhqqp.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:3000/auth/google/callback',
   },
   async ( profile, done) => {

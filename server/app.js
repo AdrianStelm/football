@@ -1,3 +1,4 @@
+require('dotenv').config({ path: 'server/.env' });
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -6,7 +7,7 @@ const passport = require('passport');
 const routes = require('./routes/routes')
 const { run } = require('./models/db')
 const { secret } = require("../config")
-require('dotenv').config()
+
 const port = 3000;
 
 app.use(session({
