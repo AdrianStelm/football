@@ -2,11 +2,52 @@ const User = require('../../models/user')
 const bcrypt = require('bcrypt')
 const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken')
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { secret } = require('../../../config')
 const crypto = require('crypto');
 const transporter = require('../email');
 
-function generateAccesToken(id, role) {
+passport.use(new GoogleStrategy({
+    clientID: '921308896536-tfe725f1ruq3kakn1i5vrernm0uuhqqp.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: 'http://localhost:3000/auth/google/callback',
+  },
+  async ( profile, done) => {
+    try {
+      let user = await User.findOne({ email: profile.emails[0].value });
+      if (user) return res.status(400).json({ messagge: `User is already existing` })
+      if (!user) {
+        user = new User({
+          username: profile.displayName,
+          email: profile.emails[0].value,
+          role: 'User',
+          password: bcrypt.hashSync(crypto.randomBytes(16).toString('hex'), 7)
+        });
+        await user.save();
+      }
+      
+      return done(null, user);
+    } catch (error) {
+      return done(error, null);
+    }
+  }
+));
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (error) {
+    done(error, null);
+  }
+});
+
+function generateAccessToken(id, role) {
     const payload = {
         id,
         role
@@ -111,6 +152,20 @@ async updatePassword(req, res) {
         res.status(500).json({ message: 'Internal error' });
         console.log(error)
   }
+}
+       
+async loginWithGoogle(req, res) {
+try {
+      if (!req.user) {
+        return res.redirect('/login?error=google_auth_failed');
+      }
+
+      const token = generateAccessToken(req.user._id, req.user.role);
+      res.json({ token });
+    } catch (error) {
+      console.error('Google auth error:', error);
+      res.redirect('/login?error=server_error');
+    }
 }
     
 }
