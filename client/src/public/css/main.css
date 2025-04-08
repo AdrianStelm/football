@@ -193,18 +193,19 @@ caption{
 }
 footer{
     position: static;
-    margin-top: 200px;
+    margin-top: 900px;
     padding: 0 8%;
-    height: 56px;
+    height: 50px;
     background: #000;
     color: #fff;
     text-decoration: none;
     text-align: center;
 }
 .GitHub{
+    text-align: center;
     margin-top: 15px;
     margin-right: 50px;
-    padding: 15px;
+    padding: 13px;
 }
 #changeImageBtn{
     position: static;
