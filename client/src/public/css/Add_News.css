@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    width: auto;
+    background-size: cover;
+    background-position: center;
+}
+header{
+    position:relative;
+    display: flex;
+    width: auto;
+    top: 0;
+    background: transparent;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    
+}
+.logo{
+    font-size: 20px;
+    font-weight: 900;
+    color: #000;
+    transition: .5s;
+}
+.logo:hover{
+    transform: scale(1.2);
+
+}
+header nav ul li{
+    position: relative;
+    float: left;
+}
+header nav ul li a{
+    padding: 15px;
+    color: #000;
+    font-size: 16px;
+    display: block;
+}
+header nav ul li a:hover{
+    background: #000;
+    color: #fff;
+}
+nav ul li ul{
+    position: absolute;
+    left: 0;
+    width: 200px;
+    background: #fff;
+    display: none;
+}
+nav ul li ul li{
+    width: 100%;
+}
+nav ul li:hover > ul{
+    display: initial;
+}
+.form{
+    background: #000;
+    color: #fff;
+    width: 1536px;
+    height: 650px;
+    border: none;
+}
+.Text{
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    margin-left: 200px;
+    text-align: center;
+    margin-top: 100px;
+}
+.file{
+    position: static;
+    border-radius: 10px;
+    justify-content: center;
+}
+button{
+    background:#000;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 100px;
+}
