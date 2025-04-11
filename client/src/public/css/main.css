@@ -1,0 +1,219 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    width: auto;
+    overflow: scroll;
+    height: 1000px;
+    background-size: cover;
+    background-position: center;
+}
+header{
+    position:relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    
+}
+.logo{
+    font-size: 20px;
+    font-weight: 900;
+    color: #000;
+    transition: .5s;
+}
+.logo:hover{
+    transform: scale(1.2);
+
+}
+header nav ul li{
+    position: relative;
+    float: left;
+}
+header nav ul li a{
+    padding: 15px;
+    color: #000;
+    font-size: 16px;
+    display: block;
+}
+header nav ul li a:hover{
+    background: #000;
+    color: #fff;
+}
+nav ul li ul{
+    position: absolute;
+    left: 0;
+    width: 180px;
+    background: #fff;
+    display: none;
+}
+nav ul li ul li{
+    width: 100%;
+}
+nav ul li:hover > ul{
+    display: initial;
+}
+.Block{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    overflow:auto;
+    align-content: center;
+    justify-content: space-between;
+    position:static;
+    margin-right: 1px;
+    float: right;
+    width: 284px;
+    height: 520px;
+    top: 50px;
+    background: #fff;
+}
+.News{
+    justify-content: space-between;
+    padding: 20px;
+    position: static;
+    top: 50px;
+    border-radius: 25px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+}
+.image{
+    display: flex;
+    background-image:url(../../img/ukraine_nt.webp);
+    height: 520px;
+    padding: 20px;
+    position: static;
+    justify-content: center;
+    bottom: 50px;
+    float: left;
+    margin-left: 1px;
+    width: 1200px;
+}
+.section{
+    height: 400px;
+    margin-top: 500px;
+}
+table {
+	width: 25%;
+	border: none;
+	margin-bottom: 20px;
+}
+table thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #d8d8d8;
+	font-size: 14px;
+}table thead tr th:first-child {
+	border-radius: 8px 0 0 8px;
+}
+table thead tr th:last-child {
+	border-radius: 0 8px 8px 0;
+}
+table tbody td {
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+table tbody tr:nth-child(even){
+	background: #f3f3f3;
+}
+table tbody tr td:first-child {
+	border-radius: 8px 0 0 8px;
+}
+table tbody tr td:last-child {
+	border-radius: 0 8px 8px 0;
+}
+.Upl{
+    position: static;
+    float: right;
+    margin-right: 200px;
+    margin-top: 40px;
+}
+.Scores{
+    position: static;
+    float: left;
+    margin-left: 200px;
+    margin-top: 40px;
+    justify-content: center;
+    text-align: center;
+}
+caption{
+    font-weight: 900;
+    position: static;
+    text-align: left;
+}
+.Scores td{
+    text-align: center;
+}
+.News_image{
+    position: static;
+    float: left;
+    height: 100px;
+    width: 100px;
+    border-radius: 20%;
+    background-image: url(../../img/istockphoto-506692747-612x612.jpg);
+}
+.add_News{
+    position: static;
+    float: left;
+    border-radius: 5px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.like-button{
+    background-color: #000;
+    color:#fff ;
+    cursor: pointer;
+}
+.button{
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+    height: 100px;
+    background: #000;
+    border-radius: 5px;
+    width: 250px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+footer{
+    position: static;
+    margin-top: 900px;
+    padding: 0 8%;
+    height: 50px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+.GitHub{
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 50px;
+    padding: 13px;
+}
+#changeImageBtn{
+    position: static;
+    float: left;
+    border-radius: 20px;
+    background: #000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 50px;
+    height: 50px;
+    
+}

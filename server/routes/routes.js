@@ -17,22 +17,42 @@ router.get("/", async (req, res) => {
 router.get('/register', (req, res) => {
   res.send('Register page');
 });
+
+router.get('/login', (req, res) => {
+  res.send('Register page');
+});
+
+router.get('/change-password', (req, res) => {
+  res.send('Register page');
+});
+
+
+router.get('/forgot-password', (req, res) => {
+  res.send('Register page');
+});
+
+
+router.get('/create-article', (req, res) => {
+  res.send('Register page');
+});
+
 router.post('/register', [
   check('username', 'Username can`t be empty').notEmpty(),
   check('password', 'Password should have 4 and more symbols and don`t have more than 16 symbols').isLength({min: 4, max: 16}),
 ], userController.registration);
 router.post('/login', userController.login);
-router.post('/forgot-password',roleMiddleware(['User']), userController.retrievePassword);
-router.post('/change-password/:token',roleMiddleware(['User']),userController.updatePassword);
+router.post('/forgot-password',roleMiddleware(['User',"Admin"]), userController.retrievePassword);
+router.post('/change-password/:token',roleMiddleware(['User',"Admin"]),userController.updatePassword);
 router.get('/users', authMiddleware, roleMiddleware(['Admin']), userController.getUsers);
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), userController.loginWithGoogle);
 
 router.get('/articles', articleController.getArticles);
 router.get('/article/:id', articleController.getArticle);
-router.post('/create-article',  upload.single('image'), articleController.createArticle);
-router.put('/edit-article/:id', upload.single('newImage'), articleController.editArticle);
-router.delete('/delete-article/:id', articleController.deleteArticle);
-router.post('/articles/:id/like', articleController.likeArticle);
+router.post('/create-article', roleMiddleware(['User',"Admin"]), upload.single('image'), articleController.createArticle);
+router.put('/edit-article/:id', roleMiddleware(['User',"Admin"]), upload.single('newImage'), articleController.editArticle);
+router.delete('/delete-article/:id', roleMiddleware(['User',"Admin"]), articleController.deleteArticle);
+router.post('/articles/:id/like', roleMiddleware(['User', "Admin"]), articleController.likeArticle);
+router.post('/articles/:id/write-comment/', roleMiddleware(['User',"Admin"]), articleController.writeComment);
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const Article = require('../../models/articles');
+const User = require('../../models/user')
 
 class newsController{
     async createArticle(req, res) {
@@ -27,7 +28,7 @@ class newsController{
 
             article.title = newTitle;
             article.text = newText;
-            article.image = newImage;
+            await Article.updateOne({ _id: id }, { $push: { image: { newImage } } })
             article.author = newAuthor;
             article.dateOfPublication = new Date();
 
@@ -56,16 +57,23 @@ class newsController{
     }
     async likeArticle(req, res) {
         try {
-        const id = req.params.id;
-        const likedArticle = await Article.findByIdAndUpdate(
-            id,
-            { $inc: { likes: 1 } },
-            { new: true } 
-        );
+            const id = req.params.id;
+            const { email } = req.body;
+            const isLikedByUser = await User.findOne({ email, likedArticles: id });
+            if (isLikedByUser) return res.status(403).json({ message: 'Article is already liked' });
 
+            const likedArticle = await Article.findByIdAndUpdate(
+                id,
+                { $inc: { likes: 1 } },
+                { new: true } 
+             );
         if (!likedArticle) {
             return res.status(404).json({ message: 'Article not found' });
         }
+            
+        await User.updateOne({ email},{ $addToSet: { likedArticles: id}});
+        return res.status(200).json({ message: 'Article was liked' });
+            
         } catch (error) {
             console.error(error);
             return res.status(500).json({ error: error.message });
@@ -101,6 +109,29 @@ class newsController{
             }
         } catch (error) {
             console.error(error);
+            return res.status(500).json({ error: error.message });
+        }
+    }
+    async writeComment(req, res) {
+        try {
+            let comment = {
+                author:req.body.author,
+                comment: req.body.commentText,
+                dateOfWriting: new Date()
+            }
+
+            const id = req.params.id;
+            const article = await Article.findOne({ _id: id});
+
+            if (!article) {
+                return res.status(404).json({ message: 'Article not found' });
+            }
+            await Article.updateOne({ _id: id }, { $push: { comments: { comment } } })
+             await article.save()
+            return res.status(200).json({ message: 'Comment was succesfully added'})
+
+        } catch (error) {
+            console.error(error)
             return res.status(500).json({ error: error.message });
         }
     }
