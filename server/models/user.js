@@ -9,7 +9,9 @@ const UserSchema = new Schema({
     dateOfRegistration: { type: Date,require:true, default: Date.now},
     role: { type: String, required: true },
     resetPasswordToken: { type: String },
-    resetPasswordExpires: { type: Date}
+    resetPasswordExpires: { type: Date },
+    likedArticles:{type: [String]}
+    
 })
 
 module.exports = mongoose.model("User", UserSchema);
