@@ -83,7 +83,7 @@ async login(req,res) {
         const validPassword = await bcrypt.compare(password, user.password)
         if (!validPassword) return res.status(400).json({ messagge: 'Incorrect password' })
         
-        const token = generateAccesToken(user._id, user.role)
+        const token = generateAccessToken(user._id, user.role)
         return res.json({ token })
     } catch (error) {
         console.error(error)
