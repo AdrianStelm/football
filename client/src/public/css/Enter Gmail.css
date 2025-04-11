@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+input{
+    height: 45px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    padding-left: 25px;
+}
+.form_title{
+    color:#305070;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+}
+main{
+    background: #F1F5FE;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Log-in_form{
+    position: relative;
+    z-index: 2;
+    max-width: 415px;
+    width: 415px;
+    background: #ffffff;
+    box-shadow: 0px 6px 50px;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    animation-name: fadeForm;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeForm{
+    0%{
+        opacity:0 ;
+    }
+    25%{
+        opacity:.25 ;
+    }
+   50% {
+        opacity:.5 ;
+    }
+    75%{
+        opacity:.75 ;
+    }
+    100%{
+        opacity:1 ;
+    }
+}
+.form_field{
+    margin-bottom: 13px;
+}
+.button{
+    font-weight: bold;
+    align-items: center;
+    font-size: 14px;
+    display: block;
+    height: 35px;
+    background: #247fff;
+    border-radius: 5px;
+    width: 356px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+.button:hover{
+    background: #0D6CF2;
+}
+a.button{
+text-decoration: none;
+}
+.devider{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color:#405087;
+    text-align: center;
+}
