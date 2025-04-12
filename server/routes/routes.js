@@ -15,25 +15,25 @@ router.get("/", async (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-  res.send('Register page');
+  res.sendFile(path.join(filePath, 'Register.html'));
 });
 
 router.get('/login', (req, res) => {
-  res.send('Register page');
+  res.sendFile(path.join(filePath, 'Log_in.html'));
 });
 
 router.get('/change-password', (req, res) => {
-  res.send('Register page');
+  res.sendFile(path.join(filePath, 'Forgot_Password.html'));
 });
 
 
 router.get('/forgot-password', (req, res) => {
-  res.send('Register page');
+  res.sendFile(path.join(filePath, 'Enter_Gmail.html'));
 });
 
 
 router.get('/create-article', (req, res) => {
-  res.send('Register page');
+  res.sendFile(path.join(filePath, 'Add_News.html'));
 });
 
 router.post('/register', [
@@ -49,6 +49,7 @@ router.get('/auth/google/callback', passport.authenticate('google', { failureRed
 
 router.get('/articles', articleController.getArticles);
 router.get('/article/:id', articleController.getArticle);
+
 router.post('/create-article', roleMiddleware(['User',"Admin"]), upload.single('image'), articleController.createArticle);
 router.put('/edit-article/:id', roleMiddleware(['User',"Admin"]), upload.single('newImage'), articleController.editArticle);
 router.delete('/delete-article/:id', roleMiddleware(['User',"Admin"]), articleController.deleteArticle);
