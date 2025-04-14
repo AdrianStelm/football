@@ -23,7 +23,7 @@ main{
     justify-content: center;
     align-items: center;
 }
-.Log-in_form{
+.enter-gmail_form{
     position: relative;
     z-index: 2;
     max-width: 415px;
