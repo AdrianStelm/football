@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/Register.css">
-    <link rel="stylesheet" href="css/normalize.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/public/css/Register.css" />
+    <link rel="stylesheet" href="/public/css/normalize.css" />
+  </head>
+  <body>
     <main>
-        <div class="circle"></div>
-        <div class="Log-in_form">
-            <h1 class="form-title">Register</h1>
-            <div class="form_fields">
-                <div class="form_field">
-                    <div class="form_field">
-                        <input type="text" placeholder="Name">
-                    </div>
-                <div class="form_field">
-                    <input type="text" placeholder="Email">
-                </div>
-                <div class="form_field">
-                    <input type="text" placeholder="Password">
-                </div>
-                <div class="form_field">
-                    <input type="text" placeholder="Сonfirm password">
-                </div>
-                <div class="form_buttons">
-                    <button class="button">Log in</button>
-                    <div class="devider">Or</div>
-                    <a href="#" class="button button-google">Google</a>
-                </div>
+      <div class="circle"></div>
+      <div class="Log-in_form">
+        <h1 class="form-title">Register</h1>
+        <div class="form_fields">
+          <form action="/register" method="post">
+            <div class="form_field">
+              <input type="text" placeholder="Name" name="username" required />
+            </div>
+            <div class="form_field">
+              <input type="email" placeholder="Email" name="email" required />
+            </div>
+            <div class="form_field">
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="form_field">
+              <input type="password" placeholder="Сonfirm password" required />
+            </div>
+            <div class="form_buttons">
+              <button type="submit" class="button">Log in</button>
+              <div class="devider">Or</div>
+              <a href="/auth/google" class="button button-google">Google</a>
+            </div>
+          </form>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>

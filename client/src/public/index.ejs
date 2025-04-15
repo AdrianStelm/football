@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/main.css" />
+    <link rel="stylesheet" href="/public/css/normalize.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a class="logo" href="#">Football News</a>
+        <nav>
+          <ul>
+            <li><a href="/">Головна</a></li>
+            <li>
+              <a href="#">Leagues</a>
+              <% if (leagues && leagues.length > 0) { %>
+              <ul>
+                <% leagues.forEach(league => { %>
+                <li>
+                  <a href="/league/<%= league.id %>?season=2024-2025">
+                    <%= league.nameLeague %>
+                  </a>
+                </li>
+                <% }) %>
+              </ul>
+              <% } %>
+            </li>
+            <li><a href="#">Match</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Scores</a></li>
+            <% if (!user) { %>
+            <li class="auth">
+              <a href="#">Register/Log In</a>
+              <ul>
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/register">Register</a></li>
+              </ul>
+            </li>
+            <% } else { %>
+            <li><a href="/logout">Log Out</a></li>
+            <% } %>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <main></main>
+    <aside>
+      <div class="Block">
+        <%if (user){%>
+        <a class="button add_News" href="/create-article">Add News</a>
+        <% }%>
+        <div class="News">
+          <div class="News_image"></div>
+          <b>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</b> Est
+          impedit reprehenderit id nulla quisquam odit tempore perferendis
+          possimus, distinctio inventore repellendus deserunt sapiente quis,
+          consectetur iure deleniti fugiat, facere tenetur.
+        </div>
+      </div>
+    </aside>
+    <section>
+      <% if (table && table.length > 0) { %>
+      <table class="Upl">
+        <caption>
+          <%= table[0].strLeague%>
+        </caption>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Logo</th>
+            <th>Team</th>
+            <th>Played</th>
+            <th>GD</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>Points</th>
+            <th>Form</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% table.forEach(team => {%>
+          <tr>
+            <td><%= team.intRank %></td>
+            <td><img loading="lazy" src="<%= team.strBadge%>" alt="" /></td>
+            <td><%= team.strTeam %></td>
+            <td><%= team.intPlayed %></td>
+            <td><%= team.intGoalDifference %></td>
+            <td><%= team.intGoalsFor %></td>
+            <td><%= team.intGoalsAgainst %></td>
+            <td><%= team.intPoints %></td>
+            <td><%= team.strForm %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+      <table class="Scores">
+        <caption>
+          Matches
+        </caption>
+        <thead>
+          <tr>
+            <th>Competition</th>
+            <th>Match</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let match of matches) { %>
+          <tr>
+            <td>
+              <img
+                src="<%= match.competition.emblem %>"
+                alt=""
+                width="30"
+                height="30"
+              /><br />
+              <%= match.competition.name %>
+            </td>
+            <td>
+              <div>
+                <img
+                  src="<%= match.homeTeam.crest %>"
+                  alt="<%= match.homeTeam.name %>"
+                  width="30"
+                  height="30"
+                /><br />
+                <strong><%= match.homeTeam.name %></strong>
+              </div>
+              <div>vs</div>
+              <div>
+                <img
+                  src="<%= match.awayTeam.crest %>"
+                  alt=""
+                  width="30"
+                  height="30"
+                /><br />
+                <strong><%= match.awayTeam.name %></strong>
+              </div>
+            </td>
+            <td>
+              <%= new Date(match.utcDate).toLocaleTimeString('en-GB', { hour:
+              '2-digit', minute: '2-digit' }) %><br />
+              <small><%= new Date(match.utcDate).toLocaleDateString() %></small>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+    <script type="module" src="public/js/main.js"></script>
+  </body>
+</html>
