@@ -7,12 +7,12 @@
     text-decoration: none;
 }
 body{
-    width: auto;
-    overflow: scroll;
-    height: 1000px;
+    overflow: auto;
+    height: 137%;
     background-size: cover;
     background-position: center;
 }
+
 header{
     position:relative;
     top: 0;
@@ -70,44 +70,28 @@ nav ul li:hover > ul{
 
 .Block{
     display: flex;
+    position: static;
     padding: 20px;
     flex-direction: column;
     overflow:auto;
-    align-content: center;
-    justify-content: space-between;
-    position:static;
-    margin-right: 1px;
     float: right;
     width: 284px;
     height: 520px;
-    top: 50px;
-    background: #fff;
 }
 .News{
-    justify-content: space-between;
     padding: 20px;
-    position: static;
     top: 50px;
     border-radius: 25px;
-    background: #fff;
-    color: #000;
     text-align: center;
 }
 .image{
+    position: static;
     display: flex;
     background-image:url(../../img/ukraine_nt.webp);
-    height: 520px;
-    padding: 20px;
-    position: static;
-    justify-content: center;
-    bottom: 50px;
+    height:520px ;
     float: left;
-    margin-left: 1px;
-    width: 1200px;
-}
-.section{
-    height: 400px;
-    margin-top: 500px;
+    width:1100px ;
+    background-repeat: no-repeat;
 }
 table {
 	width: 25%;
@@ -144,17 +128,14 @@ table tbody tr td:last-child {
 	border-radius: 0 8px 8px 0;
 }
 .Upl{
-    position: static;
     float: right;
-    margin-right: 200px;
     margin-top: 40px;
+    margin-right: 300px;
 }
 .Scores{
-    position: static;
     float: left;
     margin-left: 200px;
     margin-top: 40px;
-    justify-content: center;
     text-align: center;
 }
 caption{
@@ -180,13 +161,9 @@ caption{
 .add_News{
     position: static;
     float: left;
+    width: auto;
     border-radius: 5px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.like-button{
-    background-color: #000;
-    color:#fff ;
-    cursor: pointer;
 }
 .button{
     font-weight: bold;
@@ -195,14 +172,12 @@ caption{
     height: 100px;
     background: #000;
     border-radius: 5px;
-    width: 250px;
     color: #fff;
     text-transform: uppercase;
     text-align: center;
     cursor: pointer;
 }
 footer{
-    position: static;
     margin-top: 900px;
     padding: 0 8%;
     height: 50px;
@@ -217,13 +192,145 @@ footer{
     margin-right: 50px;
     padding: 13px;
 }
-#changeImageBtn{
-    position: static;
+.likeButton{
     float: left;
-    border-radius: 20px;
-    background: #000;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: grey;
+    background-image: url(../../icons/icons8-нравится-48.png);
     width: 50px;
+    border-radius: 40%;
     height: 50px;
-    
+}
+.likeButton.liked{
+    background: #fff;
+    background-image:url(../../icons/images.png);
+}
+.burger{
+    display: none;
+    position: relative;
+    align-items: center;
+    z-index: 50;
+    width: 30px;
+    height: 18px;
+}
+.burger span{
+    height: 2px;
+    transform: scale(1);
+    width: 100%;
+    background-color: #000;
+}
+.burger::before,.burger::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: #000;
+    transition: all 0.3s ease 0s;
+}
+.burger::before{top: 0;}
+.burger::after{bottom: 0;}
+.burger.active span{transform: scale(0);}
+.burger.active::before{
+    top: 50%;
+    transform: rotate(-45deg) translate(0 -50%);
+}
+.burger.active::after{
+    bottom: 50%;
+    transform: rotate(45deg) translate(0 50%);
+}
+@media(max-width:1441px){
+
+}
+@media(max-width:1025px){
+    .image{
+        width: 700px;
+    }
+    .Upl{
+        margin-right: 100px;
+    }
+}
+@media(min-width:2560px){
+    .image{
+        width: 1200px;
+        height: 520px;
+    }
+    body{
+        height: 1020px;
+        width: 1600px;
+    }
+}
+@media(max-width:769px){
+    .image{
+        width:450px;
+    }
+    .Upl{
+        margin-right: 30px;
+    }
+    header nav ul li a{
+        padding: 8px;
+    }
+    header{
+        height: 70px;
+    }
+    .Scores{
+        margin-left: 30px;
+        width:270px;
+    }
+}
+@media(max-width:426px){
+    .burger{
+        display: flex;
+    }
+    .image{
+        width:200px;
+        height:350px ;
+    }
+    .Block{
+        width:200px;
+        height: 350px;
+    }
+    .Upl{
+        margin-right: 100px;
+    }
+    nav{
+        display: none;
+    }
+    footer{
+        margin-top: 1100px;
+    }
+    .Scores{
+        margin-left: 50px;
+        width:300px;
+    }
+    header{
+        height: 70px;
+    }
+}
+@media(max-width:376px){
+    .image{
+        width:150px;
+    }
+    .Upl{
+        margin-right: 50px;
+        width:200px;
+    }
+    header{
+        height: 70px;
+    }
+}
+@media(max-width:321px){
+    .image{
+        width: 130px;
+    }
+    .Block{
+        width: 170px;
+    }
+    .Upl{
+        margin-right: 30px;
+    }
+    .Scores{
+        margin-left: 10px;
+    }
+    header{
+        height: 70px;
+    }
 }
