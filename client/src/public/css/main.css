@@ -48,8 +48,8 @@ header nav ul li a:hover{
 }
 nav ul li ul{
     position: absolute;
-    left: 0;
-    width: 180px;
+    right: 0;
+    width: min-content max-content;
     background: #fff;
     display: none;
 }
@@ -57,7 +57,12 @@ nav ul li ul li{
     width: 100%;
 }
 nav ul li:hover > ul{
-    display: initial;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+}
+
+.auth:hover>ul {
+    display: block;
 }
 
 .Block{
@@ -148,8 +153,12 @@ caption{
     font-weight: 900;
     text-align: left;
 }
-.Scores td{
+.Scores td,.Scores th{
     text-align: center;
+}
+
+.Scores img{
+    margin: auto;
 }
 .News_image{
     float: left;
