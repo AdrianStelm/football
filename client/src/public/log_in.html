@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/Log in.css">
-    <link rel="stylesheet" href="css/normalize.css">
-</head>
-<body>
+    <link rel="stylesheet" href="public/css/log_in.css" />
+    <link rel="stylesheet" href="public/css/normalize.css" />
+  </head>
+  <body>
     <main>
-        <form class="Log-in_form">
-            <h1 class="form-title">Log In</h1>
-            <div class="form_fields">
-                <div class="form_field">
-                <div class="form_field">
-                    <input type="text" name="email" placeholder="Email">
-                </div>
-                <div class="form_field">
-                    <input type="text" name="password" placeholder="Password">
-                </div>
-                <div class="form_buttons">
-                    <button class="button">Log in</button>
-                    <div class="devider">Or</div>
-                    <a href="#" class="button button-google">Google</a>
-                    <a href="Enter Gmail.html"button-forgot>Forgot Password</a>
-                </div>
+      <div class="circle"></div>
+      <div class="Log-in_form">
+        <form action="/login" method="post">
+          <h1 class="form-title">Log In</h1>
+
+          <div class="form_field">
+            <input type="text" placeholder="Email" name="username" required />
+          </div>
+          <div class="form_field">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="form_buttons">
+            <button type="submit" class="button">Log in</button>
+            <div class="devider">Or</div>
+            <a href="/auth/google" class="button button-google">Google</a>
+            <a href="/forgot-password" button-forgot>Forgot Password</a>
+          </div>
         </form>
+      </div>
     </main>
-</body>
+  </body>
 </html>

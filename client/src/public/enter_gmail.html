@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/Enter Gmail.css">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="public/css/enter_gmail.css">
+    <link rel="stylesheet" href="public/css/normalize.css">
 </head>
 <body>
     <main>
-        <form class="enter-gmail_form">
+        <div class="circle"></div>
+        <div class="Log-in_form">
             <h1 class="form-title">Enter Gmail</h1>
             <div class="form_fields">
+                <form action="/forgot-password" method="post">
                 <div class="form_field">
                 <div class="form_field">
-                    <input type="text" name="Email" placeholder="Email">
+                    <input type="email" placeholder="Email" name="email" required>
                 </div>
-                <div class="form_buttons">
-                    <a href="Forgot Password.html" class="button">Confirm</a>
-                </div>
-            </form>
+                <button type="submit">Send Mail</button>
+                </form>
+        </div>
     </main>
 </body>
 </html>
