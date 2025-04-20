@@ -23,7 +23,7 @@ main{
     justify-content: center;
     align-items: center;
 }
-.Log-in_form{
+.Register_form{
     position: relative;
     z-index: 2;
     max-width: 415px;
